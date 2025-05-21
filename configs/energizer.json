@@ -1,0 +1,47 @@
+{
+  "module_name": "energizer",
+  "activities": [
+    {
+      "title": "Section 1: Daily Routine",
+      "fields": [
+        {
+          "key": "wake_time",
+          "prompt": "What time do you wake up?",
+          "duration": 4
+        },
+        {
+          "key": "school_time",
+          "prompt": "What time do you go to school?",
+          "duration": 4
+        },
+        {
+          "key": "lunch_time",
+          "prompt": "When do you have lunch?",
+          "duration": 4
+        },
+        {
+          "key": "dinner_time",
+          "prompt": "What time do you have dinner?",
+          "duration": 4
+        }
+      ],
+      "summary_template": "I wake up at {wake_time}, go to school at {school_time}, have lunch at {lunch_time}, and dinner at {dinner_time}."
+    },
+    {
+      "title": "Section 2: Likes and Dislikes",
+      "fields": [
+        {
+          "key": "like",
+          "prompt": "What do you like doing?",
+          "duration": 4
+        },
+        {
+          "key": "dislike",
+          "prompt": "What do you not like doing?",
+          "duration": 4
+        }
+      ],
+      "summary_template": "I like {like}, but I don’t like {dislike}."
+    }
+  ]
+}

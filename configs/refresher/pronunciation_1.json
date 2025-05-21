@@ -1,0 +1,41 @@
+{
+    "module": "mentortle_pronunciation_1",
+    "title": "Pronunciation I: Vowel & Consonant Sounds",
+    "instruction": "Let’s practice pronunciation of vowels and consonants.",
+    "fields": [
+      {
+        "key": "vowels",
+        "prompt": "Say these vowel sounds: /i/, /ɪ/, /e/, /æ/. Try: sit, seat, set, sat.",
+        "duration": 5,
+        "llm_behavior": "validate_pronunciation",
+        "expected": "sit seat set sat"
+      },
+      {
+        "key": "consonants",
+        "prompt": "Now say these consonant sounds: /b/, /p/, /v/, /f/. Try: bat, pat, van, fan.",
+        "duration": 5,
+        "llm_behavior": "validate_pronunciation",
+        "expected": "bat pat van fan"
+      },
+      {
+        "key": "sentence1",
+        "prompt": "Say this sentence clearly: The boy bought a big bat.",
+        "duration": 5,
+        "llm_behavior": "validate_pronunciation",
+        "expected": "The boy bought a big bat"
+      },
+      {
+        "key": "sentence2",
+        "prompt": "Now try this one: My father fixes the fan.",
+        "duration": 5,
+        "llm_behavior": "validate_pronunciation",
+        "expected": "My father fixes the fan"
+      }
+    ],
+    "validation_logic": {
+      "type": "pronunciation_check",
+      "minimum_correct": 3,
+      "feedback_pass": "Great pronunciation! You're getting clearer.",
+      "feedback_fail": "Let's practice a bit more to improve your pronunciation."
+    }
+  }

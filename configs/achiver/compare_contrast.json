@@ -1,0 +1,22 @@
+{
+    "module": "compare_contrast",
+    "title": "Compare and Contrast: City vs Village Life",
+    "welcome": "Let's compare two lifestyles using linking words!",
+    "fields": [
+      {
+        "key": "comparison_statement",
+        "prompt": "Compare city life and village life using words like 'however', 'whereas', or 'on the other hand'.",
+        "duration": 6,
+        "hint": "City life is fast and noisy, whereas village life is calm and peaceful.",
+        "llm_behavior": "validate_discourse_marker",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "grammar_constructs_check",
+      "minimum_correct": 1,
+      "feedback_pass": "Great comparison! You used linking words effectively.",
+      "feedback_fail": "Try again using words like 'however' or 'whereas'."
+    }
+  }
+  

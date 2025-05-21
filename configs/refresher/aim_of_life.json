@@ -1,0 +1,45 @@
+{
+    "module": "mentortle",
+    "title": "Aim of Life",
+    "fields": [
+      {
+        "key": "career_goal",
+        "prompt": "What do you want to be when you grow up?",
+        "duration": 4,
+        "llm_behavior": "validate_meaningful_response",
+        "retry_on_fail": true,
+        "hint": "You can say: I want to be a doctor."
+      },
+      {
+        "key": "reason",
+        "prompt": "Why do you want to become that?",
+        "duration": 4,
+        "llm_behavior": "validate_meaningful_response",
+        "retry_on_fail": true,
+        "hint": "Example: Because I want to help people."
+      },
+      {
+        "key": "achievement",
+        "prompt": "What would you like to achieve in your life?",
+        "duration": 4,
+        "llm_behavior": "validate_meaningful_response",
+        "retry_on_fail": true
+      },
+      {
+        "key": "future_workplace",
+        "prompt": "Where would you like to work in the future?",
+        "duration": 4
+      },
+      {
+        "key": "inspiration",
+        "prompt": "Who inspires you the most?",
+        "duration": 4
+      }
+    ],
+    "validation_logic": {
+      "type": "family_validation",
+      "minimum_correct": 3,
+      "feedback_pass": "Your dreams are inspiring!",
+      "feedback_fail": "Let’s try to express your ideas more clearly."
+    }
+  }

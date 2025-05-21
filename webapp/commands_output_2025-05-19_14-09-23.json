@@ -1,0 +1,12 @@
+{
+  "command_instruction": "Let's dive into practicing clear instructions today. Give a clear instruction.",
+  "score": 100.0,
+  "feedback": "Great! That was a clear and useful instruction.",
+  "expected_summary": "[Skipped]",
+  "user_summary_spoken": "[Skipped]",
+  "similarity_score": 0,
+  "assessment": "SKIPPED",
+  "field_results": {
+    "command_instruction": "PASS"
+  }
+}

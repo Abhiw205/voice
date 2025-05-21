@@ -1,0 +1,9 @@
+{
+  "score": 0.0,
+  "feedback": "Try again with more details like 'who', 'where', or 'because'.",
+  "expected_summary": "[Skipped]",
+  "user_summary_spoken": "[Skipped]",
+  "similarity_score": 0,
+  "assessment": "SKIPPED",
+  "field_results": {}
+}

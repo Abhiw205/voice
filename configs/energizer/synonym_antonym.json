@@ -1,0 +1,44 @@
+{
+    "module": "vocab_builder",
+    "title": "Building Vocabulary",
+    "welcome": "Hello! Ready to practice your vocabulary today?",
+    "instruction": "Let's practice synonyms and antonyms.",
+    "fields": [
+      {
+        "key": "syn1",
+        "prompt": "Give a synonym for 'happy'.",
+        "word": "happy",
+        "word_type": "synonym",
+        "duration": 4,
+        "llm_behavior": "validate_synonym_antonym",
+        "hint": "Joyful, cheerful, content",
+        "max_attempts": 2
+      },
+      {
+        "key": "ant1",
+        "prompt": "Give an antonym for 'strong'.",
+        "word": "strong",
+        "word_type": "antonym",
+        "duration": 4,
+        "llm_behavior": "validate_synonym_antonym",
+        "hint": "Weak, feeble, fragile",
+        "max_attempts": 2
+      },
+      {
+        "key": "syn2",
+        "prompt": "Give a synonym for 'fast'.",
+        "word": "fast",
+        "word_type": "synonym",
+        "duration": 4,
+        "llm_behavior": "validate_synonym_antonym",
+        "hint": "Quick, speedy, rapid",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "synonym_antonym_check",
+      "minimum_correct": 2,
+      "feedback_pass": "Great vocabulary! Keep going.",
+      "feedback_fail": "Let’s try again to improve your vocabulary."
+    }
+  }

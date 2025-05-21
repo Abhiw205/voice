@@ -1,0 +1,28 @@
+{
+    "module": "group_discussion",
+    "title": "Group Discussion: Turn-Taking & Polite Expressions",
+    "welcome": "Welcome! Let's practice agreeing and disagreeing politely in a discussion.",
+    "fields": [
+      {
+        "key": "group_agree",
+        "prompt": "How would you politely agree in a discussion on: 'Social media has made life better'?",
+        "hint": "I agree with you because it helps us stay connected.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      },
+      {
+        "key": "group_disagree",
+        "prompt": "Now, how would you politely disagree in that discussion?",
+        "hint": "I see your point, but I think it causes distraction.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "group_discussion_turns",
+      "target_fields": ["group_agree", "group_disagree"],
+      "minimum_correct": 2,
+      "feedback_pass": "Great! You expressed your opinions respectfully.",
+      "feedback_fail": "Try to phrase your agreement or disagreement more clearly."
+    }
+  }

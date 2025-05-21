@@ -1,0 +1,28 @@
+{
+    "module": "intonation_practice",
+    "title": "Pronunciation Practice: Intonation",
+    "welcome": "Let's practice intonation today!",
+    "instruction": "Say the sentences using the correct intonation.",
+    "fields": [
+      {
+        "key": "rising",
+        "prompt": "Say this with rising intonation: 'Did you finish your homework?' (Rising tone at the end)",
+        "duration": 5,
+        "llm_behavior": "validate_rising_intonation",
+        "hint": "Did you finish your homework?"
+      },
+      {
+        "key": "falling",
+        "prompt": "Say this with falling intonation: 'What time is your class?' (Falling tone at the end)",
+        "duration": 5,
+        "llm_behavior": "validate_falling_intonation",
+        "hint": "What time is your class?"
+      }
+    ],
+    "validation_logic": {
+      "type": "stress_and_intonation",
+      "minimum_correct": 2,
+      "feedback_pass": "Great intonation practice!",
+      "feedback_fail": "Try to emphasize the pitch more clearly next time."
+    }
+  }

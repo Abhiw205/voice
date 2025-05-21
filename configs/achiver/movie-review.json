@@ -1,0 +1,46 @@
+{
+    "module": "movie_review",
+    "title": "Movie Review",
+    "welcome": "Let's review a movie you recently watched.",
+    "fields": [
+      {
+        "key": "movie_name",
+        "prompt": "Which movie or documentary did you watch last?",
+        "hint": "I watched The Pursuit of Happyness.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "duration": 5,
+        "max_attempts": 2
+      },
+      {
+        "key": "movie_story",
+        "prompt": "Describe the story briefly.",
+        "hint": "It is about a man’s struggle and hope in hard times.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "duration": 5,
+        "max_attempts": 2
+      },
+      {
+        "key": "favorite_character",
+        "prompt": "Who was your favorite character and why?",
+        "hint": "My favorite character was Chris because he never gave up.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "duration": 5,
+        "max_attempts": 2
+      },
+      {
+        "key": "movie_rating",
+        "prompt": "How would you rate the movie out of 5?",
+        "hint": "I would give it 4 out of 5.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "duration": 5,
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "custom_meaningful",
+      "target_fields": ["movie_name", "movie_story", "favorite_character", "movie_rating"],
+      "minimum_correct": 3,
+      "feedback_pass": "Awesome! Your movie review was clear and thoughtful!",
+      "feedback_fail": "Try to explain more clearly about the movie and characters."
+    }
+  }

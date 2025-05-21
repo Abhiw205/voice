@@ -1,0 +1,35 @@
+{
+    "module": "expressing_preference",
+    "title": "Expressing Preference with Comparison",
+    "welcome": "Let’s talk about your preferences and comparisons!",
+    "fields": [
+      {
+        "key": "drink_preference",
+        "prompt": "Do you prefer tea or coffee?",
+        "hint": "I prefer tea.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      },
+      {
+        "key": "drink_reason",
+        "prompt": "Why? Use comparatives or superlatives!",
+        "hint": "Tea is healthier than coffee.",
+        "llm_behavior": "validate_comparative_expression",
+        "max_attempts": 2
+      },
+      {
+        "key": "shopping_preference",
+        "prompt": "Do you prefer online shopping or store shopping?",
+        "hint": "I prefer online shopping because it's more convenient.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "custom_meaningful",
+      "target_fields": ["drink_preference", "drink_reason", "shopping_preference"],
+      "minimum_correct": 3,
+      "feedback_pass": "Great! You expressed your preferences clearly.",
+      "feedback_fail": "Try using comparative or superlative words to explain better."
+    }
+  }

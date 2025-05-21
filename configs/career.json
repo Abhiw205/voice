@@ -1,0 +1,28 @@
+{
+    "module_name": "career",
+    "fields": [
+      {
+        "key": "occupation",
+        "prompt": "Do you work or are you a student?",
+        "duration": 4
+      },
+      {
+        "key": "institution",
+        "prompt": "Where do you study or work?",
+        "duration": 4
+      },
+      {
+        "key": "likes",
+        "prompt": "What do you like about your work or school?",
+        "duration": 5
+      }
+    ],
+    "summary_template": "I am a {occupation}. I {mode} at {institution}. I like {likes}.",
+    "dynamic_logic": {
+      "mode_field": "occupation",
+      "mode_logic": {
+        "student": "study",
+        "default": "work"
+      }
+    }
+  }

@@ -1,0 +1,47 @@
+{
+  "module": "mentortle",
+  "title": "Functional Grammar I: Simple Declarative Sentences",
+  "instruction": "Let’s practice making simple sentences. Follow this pattern: Subject + Verb + Object.",
+  "fields": [
+    {
+      "key": "morning_sentence",
+      "prompt": "Make a sentence about what you do in the morning.",
+      "duration": 4,
+      "validate_pattern": "svo",
+      "llm_behavior": "validate_svo",
+      "acknowledge": true,
+      "ack_prompt": "That's a great way to start your day: {value}!"
+    },
+    {
+      "key": "friend_likes",
+      "prompt": "Make a sentence about what your best friend likes.",
+      "duration": 4,
+      "validate_pattern": "svo",
+      "llm_behavior": "validate_svo",
+      "acknowledge": true,
+      "ack_prompt": "Sounds like your friend enjoys something fun: {value}."
+    },
+    {
+      "key": "sentence1",
+      "prompt": "Tell me another sentence using subject + verb + object. One by one.",
+      "duration": 4
+    },
+    {
+      "key": "sentence2",
+      "prompt": "Another one, please.",
+      "duration": 4
+    },
+    {
+      "key": "sentence3",
+      "prompt": "One last sentence following the same pattern.",
+      "duration": 4
+    }
+  ],
+  "validation_logic": {
+    "type": "custom_svo_block",
+    "target_fields": ["sentence1", "sentence2", "sentence3"],
+    "minimum_correct": 3,
+    "feedback_pass": "Nice job! All your SVO sentences were correct.",
+    "feedback_fail": "Oops! Some of your SVO sentences need work. Try again."
+  }
+}

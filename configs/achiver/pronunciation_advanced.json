@@ -1,0 +1,58 @@
+{
+    "module": "pronunciation_advanced",
+    "title": "Pronunciation II: Connected Speech, Stress, Intonation",
+    "welcome": "Let's practice natural pronunciation and stress in English!",
+    "fields": [
+      {
+        "key": "connected_speech",
+        "prompt": "Say this sentence naturally: 'What do you want to do?'",
+        "hint": "Whaddaya wanna do?",
+        "duration": 5,
+        "llm_behavior": "validate_pronunciation",
+        "expected": "What do you want to do?",
+        "max_attempts": 2
+      },
+      {
+        "key": "sentence_stress",
+        "prompt": "Say this sentence stressing important words: 'I really want to watch that movie.'",
+        "hint": "Stress content words like 'really', 'watch', 'movie'.",
+        "duration": 5,
+        "llm_behavior": "validate_stress_pattern",
+        "expected": "I really want to watch that movie.",
+        "max_attempts": 2
+      },
+      {
+        "key": "intonation_question",
+        "prompt": "Say this as a question: 'Are you coming with us?'",
+        "hint": "Use rising tone at the end.",
+        "duration": 5,
+        "llm_behavior": "validate_rising_intonation",
+        "expected": "Are you coming with us?",
+        "max_attempts": 2
+      },
+      {
+        "key": "extra_connected_speech",
+        "prompt": "Practice connected speech: 'Did you eat yet?'",
+        "hint": "Sounds like 'Didja eat yet?'",
+        "duration": 5,
+        "llm_behavior": "validate_pronunciation",
+        "expected": "Did you eat yet?",
+        "max_attempts": 2
+      },
+      {
+        "key": "extra_merge_sentence",
+        "prompt": "Give two short sentences and merge them using connected speech.",
+        "hint": "Try combining: 'I will go. I will call you.' → 'I'll go and I'll call you.'",
+        "duration": 5,
+        "llm_behavior": "validate_pronunciation",
+        "expected": "Custom merged speech",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "stress_and_intonation",
+      "minimum_correct": 2,
+      "feedback_pass": "Excellent! Your pronunciation and intonation are on point!",
+      "feedback_fail": "Let’s try again focusing more on natural speech and stress."
+    }
+  }

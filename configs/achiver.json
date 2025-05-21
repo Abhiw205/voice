@@ -1,0 +1,37 @@
+{
+  "module_name": "achiver",
+  "activities": [
+    {
+      "title": "Section 1: Ambition",
+      "fields": [
+        {
+          "key": "dream_job",
+          "prompt": "What is your dream job?",
+          "duration": 4
+        },
+        {
+          "key": "why_dream_job",
+          "prompt": "Why do you want to become that?",
+          "duration": 5
+        }
+      ],
+      "summary_template": "My dream job is to become a {dream_job} because {why_dream_job}."
+    },
+    {
+      "title": "Section 2: Travel Goals",
+      "fields": [
+        {
+          "key": "place_to_visit",
+          "prompt": "Which place would you like to visit?",
+          "duration": 4
+        },
+        {
+          "key": "reason_to_visit",
+          "prompt": "Why do you want to go there?",
+          "duration": 4
+        }
+      ],
+      "summary_template": "I want to visit {place_to_visit} because {reason_to_visit}."
+    }
+  ]
+}

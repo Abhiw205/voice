@@ -1,0 +1,26 @@
+{
+    "module": "advanced_workshop",
+    "title": "Advanced Workshop (Podcast / Seminar / Interview)",
+    "welcome": "Advanced time! Choose an activity to practice.",
+    "fields": [
+      {
+        "key": "workshop_choice",
+        "prompt_pool": [
+          "Record a short podcast about your hobby.",
+          "Give a mini-seminar on your favorite topic.",
+          "Practice a mock job interview. Tell me about yourself."
+        ],
+        "hint": "Speak clearly and stay on topic.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "duration": 10,
+        "max_attempts": 2
+      }
+    ],
+    "random_prompt_pool": true,
+    "validation_logic": {
+      "type": "meaningful_response",
+      "minimum_correct": 1,
+      "feedback_pass": "Excellent! That was a great advanced speaking task.",
+      "feedback_fail": "Let’s try to speak with more clarity and depth next time."
+    }
+  }

@@ -1,0 +1,14 @@
+{
+  "lottery_speculation": "Speculate. Imagine some possibilities.",
+  "no_internet_speculation": "No.",
+  "score": 0.0,
+  "feedback": "Try again using 'If... would...' structure.",
+  "expected_summary": "[Skipped]",
+  "user_summary_spoken": "[Skipped]",
+  "similarity_score": 0,
+  "assessment": "SKIPPED",
+  "field_results": {
+    "lottery_speculation": "FAIL",
+    "no_internet_speculation": "FAIL"
+  }
+}

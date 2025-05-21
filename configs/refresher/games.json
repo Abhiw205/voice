@@ -1,0 +1,48 @@
+{
+  "module": "mentortle",
+  "title": "Describing Games",
+  "instruction": "Let’s talk about games and sports you enjoy.",
+  "fields": [
+    {
+      "key": "favorite_game",
+      "prompt": "What is your favorite game or sport?",
+      "duration": 4,
+      "llm_behavior": "extract_value",
+      "acknowledge": true,
+      "hint": "You can say: My favorite sport is football."
+    },
+    {
+      "key": "game_reason",
+      "prompt": "Why do you like it?",
+      "duration": 4,
+      "llm_behavior": "validate_meaningful_response",
+      "acknowledge": true,
+      "retry_on_fail": true,
+      "hint": "Because it keeps me active and I enjoy teamwork."
+    },
+    {
+      "key": "play_time",
+      "prompt": "When do you usually play or watch it?",
+      "duration": 4,
+      "acknowledge": true,
+      "llm_behavior": "extract_value",
+      "hint": "I usually play in the evening or on weekends."
+    },
+    {
+      "key": "favorite_player",
+      "prompt": "Who is your favorite player?",
+      "duration": 4
+    },
+    {
+      "key": "tournament_experience",
+      "prompt": "Have you ever played in a tournament?",
+      "duration": 4
+    }
+  ],
+  "validation_logic": {
+    "type": "family_validation",
+    "minimum_correct": 2,
+    "feedback_pass": "Awesome! Sports and games make life fun and healthy!",
+    "feedback_fail": "Let’s try that again with more details about games."
+  }
+}

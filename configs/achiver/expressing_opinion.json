@@ -1,0 +1,22 @@
+{
+    "module": "expressing_opinion",
+    "title": "Expressing Opinions",
+    "welcome": "Let's express your opinion clearly!", 
+    "fields": [
+      {
+        "key": "opinion_homework",
+        "prompt": "Express your opinion about homework. Use words like I believe, In my opinion, It seems to me that.",
+        "hint": "In my opinion, homework helps students practice more.",
+        "duration": 6,
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "custom_meaningful",
+      "target_fields": ["opinion_homework"],
+      "minimum_correct": 1,
+      "feedback_pass": "Great! You expressed your opinion clearly.",
+      "feedback_fail": "Try again and include phrases like 'I believe' or 'It seems to me'."
+    }
+  }

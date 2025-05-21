@@ -1,0 +1,7 @@
+{
+  "clause_expansion": "I met a girl who was reading a book at the cafe.",
+  "feedback": "Excellent! You added a proper clause.",
+  "field_results": {
+    "clause_expansion": "PASS"
+  }
+}

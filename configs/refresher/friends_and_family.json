@@ -1,0 +1,62 @@
+{
+    "module": "mentortle",
+    "title": "Friends and Family",
+    "instruction": "Let’s talk about family!",
+    "fields": [
+      {
+        "key": "family_count",
+        "prompt": "How many people are there in your family?",
+        "duration": 4,
+        "llm_behavior": "validate_family_answers",
+        "validate_pattern": "family",
+        "hint": "You can say: There are 5 people."
+      },
+      {
+        "key": "family_members",
+        "prompt": "Can you name them?",
+        "duration": 4,
+        "llm_behavior": "validate_family_answers",
+        "validate_pattern": "family",
+        "hint": "Example: My family members are mom, dad, and my brother."
+      },
+      {
+        "key": "best_friend",
+        "prompt": "Who is your best friend in the family?",
+        "duration": 4,
+        "llm_behavior": "validate_family_answers",
+        "validate_pattern": "family",
+        "hint": "Try saying: My best friend in my family is my sister."
+      },
+      {
+        "key": "reason",
+        "prompt": "Why do you like them the most?",
+        "duration": 4,
+        "llm_behavior": "validate_family_answers",
+        "validate_pattern": "family",
+        "hint": "Example: Because she always helps me with my homework."
+      },
+      {
+        "key": "pets",
+        "prompt": "Do you have any pets?",
+        "duration": 4,
+        "llm_behavior": "validate_family_answers",
+        "validate_pattern": "family",
+        "hint": "You can say: Yes, I have a dog. Or: No, I don't have any pets."
+      },
+      {
+        "key": "family_activity",
+        "prompt": "What do you usually do with your family?",
+        "duration": 4,
+        "llm_behavior": "validate_family_answers",
+        "validate_pattern": "family",
+        "hint": "Example: We go for walks and watch movies together."
+      }
+    ],
+    "validation_logic": {
+      "type": "family_validation",
+      "pattern": "family",
+      "minimum_correct": 4,
+      "feedback_pass": "Great job sharing about your family!",
+      "feedback_fail": "Let's try to speak a bit more clearly next time."
+    }
+  }

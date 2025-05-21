@@ -1,0 +1,42 @@
+{
+    "module": "mentortle",
+    "title": "Functional Grammar II: Yes/No Questions and Negatives",
+    "instruction": "Let’s work on yes/no questions and negative sentences.",
+    "fields": [
+      {
+        "key": "q1",
+        "prompt": "Change this sentence into a question: 'You go to school.'",
+        "duration": 4,
+        "llm_behavior": "yesno_question_check",
+        "validate_pattern": "yesno"
+      },
+      {
+        "key": "n1",
+        "prompt": "Now, make it negative.",
+        "duration": 4,
+        "llm_behavior": "negative_sentence_check",
+        "validate_pattern": "negative"
+      },
+      {
+        "key": "q2",
+        "prompt": "Change this into a question: 'She plays football.'",
+        "duration": 4,
+        "llm_behavior": "yesno_question_check",
+        "validate_pattern": "yesno"
+      },
+      {
+        "key": "n2",
+        "prompt": "Now, make this negative: 'He watches TV.'",
+        "duration": 4,
+        "llm_behavior": "negative_sentence_check",
+        "validate_pattern": "negative"
+      }
+    ],
+    "validation_logic": {
+        "type": "yesno_pattern_matching",
+        "pattern": ["yesno", "negative"],
+        "minimum_correct": 3,
+        "feedback_pass": "Excellent! Your grammar is getting stronger.",
+        "feedback_fail": "Let's try that again to improve your sentence skills."
+    }
+  }

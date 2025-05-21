@@ -1,0 +1,21 @@
+{
+    "module_name": "introduction",
+    "fields": [
+      {
+        "key": "name",
+        "prompt": "Hello! What's your name?",
+        "duration": 4
+      },
+      {
+        "key": "location",
+        "prompt": "Nice to meet you, {name}! Where are you from?",
+        "duration": 4
+      },
+      {
+        "key": "age",
+        "prompt": "And how old are you?",
+        "duration": 3
+      }
+    ],
+    "summary_template": "My name is {name}. I am from {location}. I am {age} years old."
+  }

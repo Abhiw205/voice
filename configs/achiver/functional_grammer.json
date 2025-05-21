@@ -1,0 +1,38 @@
+{
+    "module": "module3_functional_grammar",
+    "title": "Functional Grammar: Passive, Reported Speech, Discourse Markers",
+    "welcome": "Welcome to Module 3: Let’s practice advanced grammar skills!",
+    "instruction": "Transform the sentences using proper grammar structure.",
+    "fields": [
+      {
+        "key": "passive_voice",
+        "prompt": "Change this sentence into passive voice: 'The teacher explains the lesson.'",
+        "duration": 6,
+        "llm_behavior": "validate_passive_voice",
+        "hint": "The lesson is explained by the teacher.",
+        "max_attempts": 2
+      },
+      {
+        "key": "reported_speech",
+        "prompt": "Change this to reported speech: 'She said, I love reading books.'",
+        "duration": 6,
+        "llm_behavior": "validate_reported_speech",
+        "hint": "She said that she loved reading books.",
+        "max_attempts": 2
+      },
+      {
+        "key": "discourse_marker",
+        "prompt": "Join two ideas using 'however', 'therefore', or 'meanwhile'.",
+        "duration": 6,
+        "llm_behavior": "validate_discourse_marker",
+        "hint": "I wanted to go outside; however, it was raining.",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "grammar_constructs_check",
+      "minimum_correct": 2,
+      "feedback_pass": "Excellent! You've mastered key grammar structures.",
+      "feedback_fail": "Let’s try again to improve your grammar accuracy."
+    }
+  }

@@ -1,0 +1,22 @@
+{
+    "module": "mind_map",
+    "title": "Building Ideas: Mind Mapping",
+    "welcome": "Let’s practice building ideas with a mind map!",
+    "fields": [
+      {
+        "key": "mindmap_ideas",
+        "prompt": "Create a quick mind map for 'Planning a Birthday Party'.",
+        "duration": 6,
+        "hint": "Think about Venue, Guests, Cake, Games, Decoration.",
+        "llm_behavior": "validate_mindmap_ideas",
+        "validate_pattern": "mindmap",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "mindmap_check",
+      "minimum_correct": 1,
+      "feedback_pass": "Nice! You covered the key ideas well.",
+      "feedback_fail": "Let's try again with more related ideas like cake, games, guests."
+    }
+  }

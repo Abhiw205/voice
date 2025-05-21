@@ -1,0 +1,30 @@
+{
+    "module": "suggesting_advice",
+    "title": "Giving Suggestions and Advice",
+    "welcome": "Let's practice giving helpful suggestions to a friend.",
+    "fields": [
+      {
+        "key": "casual_suggestion",
+        "prompt": "Your friend feels stressed. Suggest something casually.",
+        "duration": 5,
+        "hint": "You should relax more. You could try meditation.",
+        "llm_behavior": "validate_modal_verb_usage",
+        "max_attempts": 2
+      },
+      {
+        "key": "formal_suggestion",
+        "prompt": "Offer one more suggestion in a formal way.",
+        "duration": 5,
+        "hint": "I would recommend that you take regular breaks.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "custom_meaningful",
+      "target_fields": ["casual_suggestion", "formal_suggestion"],
+      "minimum_correct": 2,
+      "feedback_pass": "Excellent advice! Both casual and formal suggestions were clear.",
+      "feedback_fail": "Try using 'should', 'could', or 'I recommend that you...' for advice."
+    }
+  }

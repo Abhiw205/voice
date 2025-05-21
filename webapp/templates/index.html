@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Speaking Practice UI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f8ff;
+    }
+    .container {
+      max-width: 100%;
+      margin: auto;
+      padding: 0;
+      background-color: #ffffff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+    }
+
+    .left-pane {
+      width: 250px;
+      padding: 20px;
+      background: #f7f9fc;
+      border-right: 1px solid #ccc;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .right-pane {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      background: #fdfdfd;
+    }
+
+    select, button {
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #f8f9fa;
+      font-size: 15px;
+      transition: background-color 0.2s;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #e2e6ea;
+      cursor: pointer;
+    }
+
+    #flowDisplay {
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      background-color: #ffffff;
+      padding: 12px;
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #333;
+      flex: 1;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      min-height: 150px;
+      max-height: 100%;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div style="display: flex; height: 80vh;">
+    <!-- Left Pane -->
+    <div class="left-pane">
+      <h3>Modules</h3>
+      <label for="folderSelect">Category</label>
+      <select id="folderSelect">
+        <option value="refresher">Refresher</option>
+        <option value="energizer">Energizer</option>
+        <option value="achiver">Achiever</option>
+      </select>
+      <label for="configSelect">Module</label>
+      <select id="configSelect"></select>
+      <button id="startBtn" style="margin-top: 20px;">Start Module</button>
+    </div>
+
+    <!-- Right Pane -->
+    <div class="right-pane">
+      <h3>Interaction Logs</h3>
+      <div id="flowDisplay"></div>
+      <button id="recordBtn" style="margin-top: 20px;">Record and Submit</button>
+    </div>
+  </div>
+</div>
+<script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+<script>
+  const socket = io("http://localhost:3000");
+  let currentFieldKey = "";
+  let latestDuration = 5000;
+
+  socket.on("connect", () => {
+    console.log("✅ Socket connected:", socket.id);
+    appendMsg("status", "Socket connected");
+  });
+
+  socket.on("disconnect", () => {
+    console.warn("❌ Socket disconnected");
+    appendMsg("status", "Socket disconnected");
+  });
+
+  socket.on("ui_event", async (data) => {
+    const { label, message, duration, retry, field_key } = data;
+    console.log("📩 ui_event received:", label, message);
+    appendMsg(label, message);
+
+    // Speak the message for specific labels
+    if (["welcome", "prompt", "feedback"].includes(label)) {
+      await speak(message);
+    }
+
+    if (label === "prompt") {
+      appendMsg("status", "Prompt received. Please click 'Record and Submit' when you're ready.");
+      if (field_key) currentFieldKey = field_key;
+      latestDuration = duration ? duration * 1000 : 5000;
+    }
+
+    if (label === "feedback") {
+      appendMsg("status", "Feedback received. Please click 'Record and Submit' when you're ready.");
+      if (retry && field_key) {
+        appendMsg("status", "Retrying...");
+        setTimeout(() => {
+          socket.emit("retry_prompt", { field_key });
+        }, 2000);
+      }
+    }
+  });
+// Speech synthesis function
+function speak(text) {
+  return new Promise(resolve => {
+    const utterance = new SpeechSynthesisUtterance(text);
+    const voices = window.speechSynthesis.getVoices();
+    utterance.voice = voices.find(v => v.lang && v.lang.includes("en")) || null;
+    utterance.rate = 0.95;
+    utterance.pitch = 1.0;
+    utterance.onend = resolve;
+    window.speechSynthesis.speak(utterance);
+  });
+}
+  const folderSelect = document.getElementById("folderSelect");
+  const configSelect = document.getElementById("configSelect");
+  const flowBox = document.getElementById("flowDisplay");
+  let selectedConfig = "";
+
+  folderSelect.addEventListener("change", () => {
+    fetch("/get-configs", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ folder: folderSelect.value })
+    })
+    .then(res => res.json())
+    .then(data => {
+      configSelect.innerHTML = "";
+      data.forEach(cfg => {
+        const option = document.createElement("option");
+        option.value = `${folderSelect.value}/${cfg}`;
+        option.textContent = cfg;
+        configSelect.appendChild(option);
+      });
+    });
+  });
+
+  document.getElementById("startBtn").addEventListener("click", () => {
+    selectedConfig = configSelect.value;
+    fetch("http://127.0.0.1:3000/start-module", {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ config: selectedConfig })
+    }).then(res => res.json())
+      .then(data => {
+        console.log("✅ Module started:", data);
+        appendMsg("status", "Module started. Waiting for server to emit prompts...");
+      })
+      .catch(err => {
+        console.error("❌ Failed to start module:", err);
+        appendMsg("error", "Failed to start module.");
+      });
+  });
+
+</script>
+<script>
+// Audio recording and submission logic
+let mediaRecorder;
+let audioChunks = [];
+
+document.getElementById("recordBtn").addEventListener("click", async () => {
+  try {
+    console.log("🎤 Requesting microphone access...");
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    console.log("✅ Microphone access granted:", stream);
+    mediaRecorder = new MediaRecorder(stream);
+    audioChunks = [];
+
+    mediaRecorder.ondataavailable = event => audioChunks.push(event.data);
+    mediaRecorder.onstop = async () => {
+      const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+      const formData = new FormData();
+      formData.append("audio", audioBlob, "recording.webm");
+
+      try {
+        const transcribeRes = await fetch("http://127.0.0.1:3000/transcribe", {
+          method: "POST",
+          body: formData
+        });
+        const transcribeData = await transcribeRes.json();
+
+        if (!transcribeData.transcript) {
+          appendMsg("error", "Transcription failed.");
+          return;
+        }
+
+        appendMsg("recognized", transcribeData.transcript);
+
+        const responseRes = await fetch("http://127.0.0.1:3000/submit-response", {
+          method: "POST",
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text: transcribeData.transcript,
+            field_key: currentFieldKey
+          })
+        });
+        const responseData = await responseRes.json();
+        if (responseData.result) {
+          appendMsg("feedback", responseData.result);
+        } else {
+          appendMsg("error", "No feedback received.");
+        }
+        appendMsg("feedback", responseData.result || "No feedback received.");
+      } catch (err) {
+        appendMsg("error", "Error during processing.");
+      }
+    };
+
+    mediaRecorder.start();
+    appendMsg("status", "🎙️ Recording started...");
+    const recordDuration = latestDuration || 5000;
+    setTimeout(() => {
+      mediaRecorder.stop();
+      appendMsg("status", "Recording stopped. Uploading...");
+    }, recordDuration);
+  } catch (err) {
+    appendMsg("error", "Microphone permission denied or unavailable.");
+  }
+});
+
+function appendMsg(label, message) {
+  const entry = document.createElement("p");
+  entry.innerHTML = `<strong>${label}:</strong> ${message}`;
+  flowBox.appendChild(entry);
+}
+</script>
+</body>
+</html>

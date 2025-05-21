@@ -1,0 +1,31 @@
+{
+    "module": "energizer",
+    "title": "Speaking Lab",
+    "welcome": "Welcome to the Speaking Lab! Let's practice interviews and presentations.",
+    "instruction": "Answer the questions clearly and confidently.",
+    "fields": [
+      {
+        "key": "self_intro",
+        "prompt": "Simulate an interview. Tell me about yourself in 30 seconds!",
+        "duration": 7,
+        "llm_behavior": "validate_meaningful_response_strict",
+        "hint": "Hello, my name is Priya. I am studying computer science. I enjoy coding and solving problems. My hobbies are painting and reading novels.",
+        "validate_pattern": "meaningful_response"
+      },
+      {
+        "key": "hometown_presentation",
+        "prompt": "Give a mini-presentation about your hometown.",
+        "duration": 7,
+        "llm_behavior": "validate_meaningful_response_strict",
+        "hint": "I come from Jaipur, a beautiful city known for its pink buildings and rich history. Tourists visit to see the forts, palaces, and local handicrafts. The food is also very delicious!",
+        "validate_pattern": "meaningful_response"
+      }
+    ],
+    "validation_logic": {
+      "type": "pattern_match",
+      "pattern": "meaningful_response",
+      "minimum_correct": 2,
+      "feedback_pass": "Excellent! You spoke clearly and confidently.",
+      "feedback_fail": "Let’s try again with more structured responses."
+    }
+  }

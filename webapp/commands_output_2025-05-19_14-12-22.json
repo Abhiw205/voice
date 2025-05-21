@@ -1,0 +1,12 @@
+{
+  "command_instruction": "No Give a clear instruction for lab safety.",
+  "score": 0.0,
+  "feedback": "Let's try again with a clear command, like 'Wash your hands.'",
+  "expected_summary": "[Skipped]",
+  "user_summary_spoken": "[Skipped]",
+  "similarity_score": 0,
+  "assessment": "SKIPPED",
+  "field_results": {
+    "command_instruction": "FAIL"
+  }
+}

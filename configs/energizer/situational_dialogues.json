@@ -1,0 +1,38 @@
+{
+    "module": "energizer",
+    "title": "Situational Dialogues (Roleplay)",
+    "welcome": "Let’s practice some real-life English situations.",
+    "instruction": "Respond appropriately in different settings.",
+    "fields": [
+      {
+        "key": "hotel_checkin",
+        "prompt": "You are at a hotel. Make a sentence to check your reservation.",
+        "duration": 5,
+        "llm_behavior": "validate_contextual_dialogue",
+        "context": "Checking in at a hotel",
+        "hint": "Good evening. I have a reservation under the name Mohan Bhagwat."
+      },
+      {
+        "key": "doctor_visit",
+        "prompt": "You are visiting the doctor. Explain your health issue.",
+        "duration": 5,
+        "llm_behavior": "validate_contextual_dialogue",
+        "context": "Describing symptoms at a doctor's office",
+        "hint": "Hello, Doctor. I've been having a sore throat for three days."
+      },
+      {
+        "key": "job_intro",
+        "prompt": "You are at a job interview. Tell me about yourself.",
+        "duration": 5,
+        "llm_behavior": "validate_contextual_dialogue",
+        "context": "Introducing yourself in a job interview",
+        "hint": "I am a hardworking and creative person who loves solving problems."
+      }
+    ],
+    "validation_logic": {
+      "type": "contextual_dialogue_check",
+      "minimum_correct": 2,
+      "feedback_pass": "Nice! Your roleplay responses were on point.",
+      "feedback_fail": "Let's try again and be more context-aware."
+    }
+  }

@@ -1,0 +1,34 @@
+{
+    "module": "consequences_practice",
+    "title": "What After It? (Consequences)",
+    "welcome": "Let's explore what happens after certain actions!",
+    "fields": [
+      {
+        "key": "conseq1",
+        "prompt": "If you exercise daily, what might happen?",
+        "hint": "If I exercise daily, I will stay healthy and feel energetic.",
+        "llm_behavior": "validate_first_conditional",
+        "duration": 5
+      },
+      {
+        "key": "conseq2",
+        "prompt": "If you work hard, what will happen?",
+        "hint": "If I work hard, I will succeed.",
+        "llm_behavior": "validate_first_conditional",
+        "duration": 5
+      },
+      {
+        "key": "conseq3",
+        "prompt": "If it rains, what will you do?",
+        "hint": "If it rains, I will stay indoors.",
+        "llm_behavior": "validate_first_conditional",
+        "duration": 5
+      }
+    ],
+    "validation_logic": {
+      "type": "verb_constructs_validation",
+      "minimum_correct": 2,
+      "feedback_pass": "Excellent! You understand consequences well.",
+      "feedback_fail": "Let's try again and think about the results of actions."
+    }
+  }

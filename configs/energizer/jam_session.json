@@ -1,0 +1,29 @@
+{
+    "module": "jam_sessions",
+    "title": "JAM SESSIONS (Spontaneous Speaking)",
+    "welcome": "Welcome! It's time to speak freely. Let's begin with a fun topic!",
+    "instruction": "Speak for one minute about your favorite food.",
+    "prompt_pool": [
+      "Speak for one minute about your favorite food!",
+      "Talk about a memorable trip you took.",
+      "Describe your favorite hobby and why you enjoy it.",
+      "Explain how you spend your weekends.",
+      "Share a story about a time you felt proud."
+    ],
+    "fields": [
+      {
+        "key": "jam1",
+        "prompt": "",  
+        "duration": 10,
+        "hint": "Share your thoughts clearly. Example: I love painting because it relaxes me.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "validate_meaningful_response_strict",
+      "minimum_correct": 1,
+      "feedback_pass": "Well done! You spoke fluently and clearly.",
+      "feedback_fail": "Try to be more expressive and stay on topic."
+    }
+  }

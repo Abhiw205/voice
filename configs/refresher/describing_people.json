@@ -1,0 +1,45 @@
+{
+    "module": "mentortle",
+    "title": "Describing People",
+    "instruction": "Let's describe a person you know.",
+    "fields": [
+      {
+        "key": "appearance",
+        "prompt": "Can you describe your best friend’s appearance?",
+        "duration": 4,
+        "llm_behavior": "validate_adjective_description",
+        "hint": "My friend is tall and has curly hair.",
+        "max_attempts": 2
+      },
+      {
+        "key": "personality",
+        "prompt": "Describe their personality. Are they funny, serious, kind, or something else?",
+        "duration": 4,
+        "llm_behavior": "validate_adjective_description",
+        "hint": "They are kind and helpful.",
+        "max_attempts": 2
+      },
+      {
+        "key": "like_most",
+        "prompt": "What is one thing you like most about their personality?",
+        "duration": 4,
+        "llm_behavior": "validate_adjective_description",
+        "hint": "I like that they are always supportive.",
+        "max_attempts": 2
+      },
+      {
+        "key": "describe_self",
+        "prompt": "If you could describe yourself in 3 words, what would they be?",
+        "duration": 4,
+        "llm_behavior": "validate_adjective_description",
+        "hint": "Smart, patient, friendly.",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "family_validation",
+      "minimum_correct": 3,
+      "feedback_pass": "You described people really well!",
+      "feedback_fail": "Let's try again and describe more clearly."
+    }
+  }

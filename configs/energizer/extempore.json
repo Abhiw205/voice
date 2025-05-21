@@ -1,0 +1,31 @@
+{
+    "module": "energizer",
+    "title": "Extempore (1-Minute Topics)",
+    "welcome": "Welcome! Let's practice quick thinking with short speeches.",
+    "instruction": "Speak clearly and express your thoughts on each topic.",
+    "fields": [
+      {
+        "key": "reading_books",
+        "prompt": "Speak for one minute on: 'The Importance of Reading Books'",
+        "duration": 7,
+        "llm_behavior": "validate_meaningful_response_strict",
+        "hint": "Reading books opens our minds. It helps us learn about different cultures, ideas, and perspectives. Books also improve our vocabulary and imagination.",
+        "validate_pattern": "meaningful_response"
+      },
+      {
+        "key": "teamwork_benefits",
+        "prompt": "Speak for one minute on: 'The Benefits of Teamwork'",
+        "duration": 7,
+        "llm_behavior": "validate_meaningful_response_strict",
+        "hint": "Teamwork teaches us how to listen, share ideas, and work together. It makes tasks easier and faster. I enjoy team projects because I learn from my teammates.",
+        "validate_pattern": "meaningful_response"
+      }
+    ],
+    "validation_logic": {
+      "type": "pattern_match",
+      "pattern": "meaningful_response",
+      "minimum_correct": 2,
+      "feedback_pass": "Well done! You shared your ideas confidently.",
+      "feedback_fail": "Let’s try again with clearer ideas and examples."
+    }
+  }

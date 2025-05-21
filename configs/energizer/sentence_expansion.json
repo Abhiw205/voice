@@ -1,0 +1,21 @@
+{
+    "module": "module2",
+    "title": "Functional Grammar I: Sentence Expansion",
+    "welcome": "Hello! Welcome to Speaking Practice Module 2.",
+    "instruction": "Expand the sentence using a clause.",
+    "fields": [
+      {
+        "key": "clause_expansion",
+        "prompt": "Expand this sentence using a clause: 'I met a girl.' Add details like where, when, or why.",
+        "duration": 5,
+        "llm_behavior": "validate_clause_expansion",
+        "hint": "I met a girl who was reading a book at the café."
+      }
+    ],
+    "validation_logic": {
+      "type": "custom_clause",
+      "minimum_correct": 1,
+      "feedback_pass": "Excellent! You added a proper clause.",
+      "feedback_fail": "Try again with more details like 'who', 'where', or 'because'."
+    }
+  }

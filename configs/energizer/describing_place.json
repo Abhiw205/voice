@@ -1,0 +1,22 @@
+{
+    "module": "places",
+    "title": "Describing Places",
+    "instruction": "Describe your favorite park using spatial words.",
+    "welcome": "Let's describe places",
+    "fields": [
+      {
+        "key": "place_description",
+        "prompt": "use words like 'near', 'next to', 'behind'.",
+        "duration": 5,
+        "llm_behavior": "validate_place_description",
+        "hint": "The park is near my house. It has a big fountain next to the playground.",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "place_description_check",
+      "minimum_correct": 1,
+      "feedback_pass": "Awesome! You described the place well.",
+      "feedback_fail": "Try again using spatial words like 'behind' or 'near'."
+    }
+  }

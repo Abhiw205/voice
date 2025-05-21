@@ -1,0 +1,61 @@
+{
+    "module": "mentortle",
+    "title": "Education",
+    "instruction": "Let's talk about school.",
+    "fields": [
+      {
+        "key": "school_name",
+        "prompt": "What school or college do you go to?",
+        "duration": 4,
+        "llm_behavior": "validate_adjective_description",
+        "hint": "I study at Delhi Public School.",
+        "max_attempts": 2
+      },
+      {
+        "key": "class_schedule",
+        "prompt": "What is your class schedule like? (Morning? Afternoon?)",
+        "duration": 4,
+        "llm_behavior": "validate_adjective_description",
+        "hint": "My classes are in the morning.",
+        "max_attempts": 2
+      },
+      {
+        "key": "fav_subject",
+        "prompt": "What subjects do you like the most?",
+        "duration": 4,
+        "llm_behavior": "validate_adjective_description",
+        "hint": "I like Math and Science.",
+        "max_attempts": 2
+      },
+      {
+        "key": "fav_teacher",
+        "prompt": "Who is your favorite teacher and why?",
+        "duration": 5,
+        "llm_behavior": "validate_adjective_description",
+        "hint": "My favorite teacher is Mr. Sharma because he explains clearly.",
+        "max_attempts": 2
+      },
+      {
+        "key": "least_fav_subject",
+        "prompt": "What is your least favorite subject?",
+        "duration": 4,
+        "llm_behavior": "validate_adjective_description",
+        "hint": "I don’t like History.",
+        "max_attempts": 2
+      },
+      {
+        "key": "break_time",
+        "prompt": "What do you like to do during break time?",
+        "duration": 4,
+        "llm_behavior": "validate_adjective_description",
+        "hint": "I play with friends and eat snacks.",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "family_validation",
+      "minimum_correct": 4,
+      "feedback_pass": "Awesome! You gave great answers about school.",
+      "feedback_fail": "Let’s try again to improve your school description."
+    }
+  }

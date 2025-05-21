@@ -1,0 +1,47 @@
+{
+    "module": "mentortle",
+    "title": "Pronunciation II: Syllable Stress and Intonation",
+    "instruction": "Let’s practice syllable stress and rising intonation.",
+    "fields": [
+      {
+        "key": "stress_teacher",
+        "prompt": "Where’s the stress in the word ‘teacher’? Say it out loud.",
+        "duration": 4,
+        "llm_behavior": "validate_stress_pattern",
+        "expected": "teacher"
+      },
+      {
+        "key": "stress_doctor",
+        "prompt": "Where’s the stress in the word ‘doctor’? Say it clearly.",
+        "duration": 4,
+        "llm_behavior": "validate_stress_pattern",
+        "expected": "doctor"
+      },
+      {
+        "key": "stress_banana",
+        "prompt": "Which syllable is stressed in ‘banana’?",
+        "duration": 4,
+        "llm_behavior": "validate_stress_pattern",
+        "expected": "banana"
+      },
+      {
+        "key": "stress_photograph",
+        "prompt": "Say the word ‘photograph’ with correct stress.",
+        "duration": 4,
+        "llm_behavior": "validate_stress_pattern",
+        "expected": "photograph"
+      },
+      {
+        "key": "intonation_question",
+        "prompt": "Practice this question with rising intonation: ‘Are you coming today?’",
+        "duration": 5,
+        "llm_behavior": "validate_rising_intonation"
+      }
+    ],
+    "validation_logic": {
+      "type": "stress_and_intonation",
+      "minimum_correct": 4,
+      "feedback_pass": "Nice! Your stress and intonation were accurate.",
+      "feedback_fail": "Let's practice a bit more to improve stress and tone."
+    }
+  }

@@ -1,0 +1,49 @@
+{
+    "module": "mentortle",
+    "title": "Neighbors",
+    "instruction": "Let’s talk about your neighbors and your experiences with them.",
+    "fields": [
+      {
+        "key": "know_neighbors",
+        "prompt": "Do you know your neighbors well?",
+        "duration": 3,
+        "llm_behavior": "extract_value",
+        "acknowledge": true,
+        "hint": "You can say: Yes, I do / No, I don’t."
+      },
+      {
+        "key": "describe_neighbor",
+        "prompt": "Describe one neighbor you like.",
+        "duration": 5,
+        "llm_behavior": "validate_meaningful_response",
+        "retry_on_fail": true,
+        "acknowledge": true,
+        "hint": "My neighbor is friendly and kind."
+      },
+      {
+        "key": "help_event",
+        "prompt": "Have you ever helped a neighbor or had a fun event with them?",
+        "duration": 5,
+        "llm_behavior": "validate_meaningful_response",
+        "retry_on_fail": true,
+        "acknowledge": true,
+        "hint": "Yes, I helped them carry groceries once."
+      },
+      {
+        "key": "talk_about",
+        "prompt": "What do you usually talk about with your neighbors?",
+        "duration": 4
+      },
+      {
+        "key": "visited_neighbor",
+        "prompt": "Were you ever invited to your neighbor’s house?",
+        "duration": 4
+      }
+    ],
+    "validation_logic": {
+      "type": "family_validation",
+      "minimum_correct": 2,
+      "feedback_pass": "That’s wonderful! Good neighbors make great communities.",
+      "feedback_fail": "Let’s talk a bit more about your neighbors next time."
+    }
+  }

@@ -1,0 +1,47 @@
+{
+    "module": "mentortle",
+    "title": "Hometown",
+    "instruction": "Let’s talk about where you live.",
+    "fields": [
+      {
+        "key": "hometown_location",
+        "prompt": "Where is your hometown?",
+        "duration": 4,
+        "llm_behavior": "extract_value",
+        "acknowledge": true,
+        "hint": "You can say: It is in Gujarat."
+      },
+      {
+        "key": "famous_for",
+        "prompt": "What is it famous for?",
+        "duration": 4,
+        "llm_behavior": "extract_value",
+        "acknowledge": true,
+        "hint": "It is famous for its lakes and temples."
+      },
+      {
+        "key": "special_place",
+        "prompt": "Can you describe a special place there using prepositions like 'next to,' 'in front of,' or 'near'?",
+        "duration": 5,
+        "llm_behavior": "validate_meaningful_response",
+        "retry_on_fail": true,
+        "hint": "Try: 'There is a park next to my house.'"
+      },
+      {
+        "key": "favorite_place",
+        "prompt": "What is your favorite place in your hometown?",
+        "duration": 4
+      },
+      {
+        "key": "festival_celebration",
+        "prompt": "How do people celebrate festivals in your hometown?",
+        "duration": 4
+      }
+    ],
+    "validation_logic": {
+      "type": "family_validation",
+      "minimum_correct": 2,
+      "feedback_pass": "Lovely! You’ve described your hometown beautifully.",
+      "feedback_fail": "Let’s try that again with more details."
+    }
+  }

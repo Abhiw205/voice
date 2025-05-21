@@ -1,0 +1,38 @@
+{
+    "module": "module2_grammar_expansion",
+    "title": "Functional Grammar II: Modal Verbs, Conditionals, and Phrasal Verbs",
+    "welcome": "Let's dive into some advanced grammar practice!",
+    "instruction": "Complete each sentence using the appropriate structure.",
+    "fields": [
+      {
+        "key": "modal_verb",
+        "prompt": "Use a modal verb: 'You dash wear a seatbelt while driving.' Use must or should or might",
+        "duration": 5,
+        "llm_behavior": "validate_modal_verb_usage",
+        "validate_pattern": "modal_verb",
+        "hint": "You must wear a seatbelt while driving."
+      },
+      {
+        "key": "first_conditional",
+        "prompt": "Make a 1st conditional sentence: 'If it rains, dash.'",
+        "duration": 5,
+        "llm_behavior": "validate_first_conditional",
+        "validate_pattern": "conditional",
+        "hint": "If it rains, we will stay indoors."
+      },
+      {
+        "key": "phrasal_verb",
+        "prompt": "Complete with a phrasal verb: 'She ran _ money.' use out of or into or away from)",
+        "duration": 5,
+        "llm_behavior": "validate_phrasal_verb",
+        "validate_pattern": "phrasal_verb",
+        "hint": "She ran out of money."
+      }
+    ],
+    "validation_logic": {
+      "type": "verb_constructs_validation",
+      "minimum_correct": 2,
+      "feedback_pass": "Excellent! You applied grammar rules well.",
+      "feedback_fail": "Let's review modal verbs and conditionals again."
+    }
+  }

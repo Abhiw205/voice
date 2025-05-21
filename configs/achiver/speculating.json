@@ -1,0 +1,29 @@
+{
+    "module": "speculating",
+    "title": "Speculating - Imagining Possibilities",
+    "welcome": "Let's speculate! Imagine some possibilities.",
+    "fields": [
+      {
+        "key": "lottery_speculation",
+        "prompt": "What would happen if you won the lottery?",
+        "hint": "If I won the lottery, I would travel the world.",
+        "llm_behavior": "validate_first_conditional",
+        "duration": 6,
+        "max_attempts": 2
+      },
+      {
+        "key": "no_internet_speculation",
+        "prompt": "What would happen if there were no internet?",
+        "hint": "If there were no internet, communication would be very difficult.",
+        "llm_behavior": "validate_first_conditional",
+        "duration": 6,
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "verb_constructs_validation",
+      "minimum_correct": 2,
+      "feedback_pass": "Excellent! You used conditional sentences correctly.",
+      "feedback_fail": "Try again using 'If... would...' structure."
+    }
+  }

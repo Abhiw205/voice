@@ -1,0 +1,38 @@
+{
+    "module": "literature_prose_poetry",
+    "title": "Prose and Poetry Analysis",
+    "welcome": "Let’s explore prose and poetry together.",
+    "fields": [
+      {
+        "key": "literature_emotion",
+        "prompt": "Choose a poem or prose piece you like. What emotion does it create?",
+        "hint": "It creates a feeling of peace and reflection.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2,
+        "duration": 5
+      },
+      {
+        "key": "literature_symbol",
+        "prompt": "Can you identify one symbol and explain its meaning?",
+        "hint": "The dove symbolizes peace.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2,
+        "duration": 5
+      },
+      {
+        "key": "literature_voice",
+        "prompt": "How would you describe the author's voice? (sarcastic, sympathetic, joyful, etc.)",
+        "hint": "The author’s voice is sympathetic.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2,
+        "duration": 5
+      }
+    ],
+    "validation_logic": {
+      "type": "custom_literature_analysis",
+      "target_fields": ["literature_emotion", "literature_symbol", "literature_voice"],
+      "minimum_correct": 2,
+      "feedback_pass": "Excellent literary analysis!",
+      "feedback_fail": "Try to think more deeply about the tone or symbols."
+    }
+  }

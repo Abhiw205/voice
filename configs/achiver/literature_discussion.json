@@ -1,0 +1,54 @@
+{
+    "module": "literature_discussion",
+    "title": "Literature: Analyzing and Discussing Texts",
+    "welcome": "Let's explore your thoughts on literature and storytelling.",
+    "fields": [
+      {
+        "key": "last_read",
+        "prompt": "What was the last story, poem, or novel you read?",
+        "hint": "You can say: I read 'The Alchemist' by Paulo Coelho.",
+        "duration": 5,
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      },
+      {
+        "key": "theme",
+        "prompt": "What was the main theme of that story?",
+        "hint": "You can say: The theme was self-discovery.",
+        "duration": 5,
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      },
+      {
+        "key": "author_voice",
+        "prompt": "Was the author's voice formal or informal?",
+        "hint": "You can say: It was formal / It felt informal and conversational.",
+        "duration": 5,
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      },
+      {
+        "key": "extra_symbol",
+        "prompt": "Pick a symbol from the story and explain it.",
+        "hint": "For example: The desert in 'The Alchemist' symbolizes the journey of life.",
+        "duration": 5,
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      },
+      {
+        "key": "extra_tone",
+        "prompt": "Describe the tone of the story (happy, sad, angry, mysterious).",
+        "hint": "You can say: The tone was mysterious and suspenseful.",
+        "duration": 5,
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+    "type": "custom_literature_analysis",
+    "target_fields": ["literature_title", "literature_theme", "literature_tone"],
+    "minimum_correct": 2,
+    "feedback_pass": "Well done! Your analysis shows great literary understanding.",
+    "feedback_fail": "Let's revisit some ideas and give it another thoughtful try."
+    }
+  }

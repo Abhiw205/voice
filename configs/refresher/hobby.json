@@ -1,0 +1,49 @@
+{
+    "module": "mentortle",
+    "title": "Hobby",
+    "instruction": "Let’s talk about your hobbies and how you enjoy them.",
+    "fields": [
+      {
+        "key": "hobby_name",
+        "prompt": "What hobbies do you have?",
+        "duration": 4,
+        "llm_behavior": "extract_value",
+        "acknowledge": true,
+        "hint": "You can say: I enjoy painting."
+      },
+      {
+        "key": "hobby_frequency",
+        "prompt": "How often do you do this hobby? (Use words like always, often, sometimes, rarely)",
+        "duration": 4,
+        "llm_behavior": "validate_meaningful_response",
+        "retry_on_fail": true,
+        "acknowledge": true,
+        "hint": "Example: I paint often."
+      },
+      {
+        "key": "hobby_reason",
+        "prompt": "Why do you enjoy this hobby?",
+        "duration": 4,
+        "llm_behavior": "validate_meaningful_response",
+        "retry_on_fail": true,
+        "acknowledge": true,
+        "hint": "Because it makes me feel relaxed."
+      },
+      {
+        "key": "hobby_partner",
+        "prompt": "Who do you do this hobby with?",
+        "duration": 4
+      },
+      {
+        "key": "new_hobby",
+        "prompt": "Would you like to try a new hobby?",
+        "duration": 4
+      }
+    ],
+    "validation_logic": {
+      "type": "family_validation",
+      "minimum_correct": 2,
+      "feedback_pass": "Awesome! Hobbies help us grow and stay happy.",
+      "feedback_fail": "Let’s talk more about your hobbies next time."
+    }
+  }

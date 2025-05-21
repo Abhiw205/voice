@@ -1,0 +1,35 @@
+{
+    "module": "literature_analysis",
+    "title": "Literature: Theme and Tone",
+    "welcome": "Let’s explore some literature questions!",
+    "fields": [
+      {
+        "key": "story_read",
+        "prompt": "What was the last story, poem, or novel you read?",
+        "hint": "I read The Little Prince.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      },
+      {
+        "key": "theme",
+        "prompt": "What was the main theme of that story?",
+        "hint": "The theme was friendship and imagination.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      },
+      {
+        "key": "tone",
+        "prompt": "Was the author's voice formal or informal?",
+        "hint": "It was informal and personal.",
+        "llm_behavior": "validate_meaningful_response_strict",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "custom_literature_analysis",
+      "target_fields": ["story_read", "theme", "tone"],
+      "minimum_correct": 2,
+      "feedback_pass": "Great insights! You understood the text well.",
+      "feedback_fail": "Let's try again. Focus on story, theme, and tone."
+    }
+  }

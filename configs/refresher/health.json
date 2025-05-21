@@ -1,0 +1,48 @@
+{
+    "module": "mentortle",
+    "title": "Health",
+    "instruction": "Talking about health and staying well.",
+    "fields": [
+      {
+        "key": "recent_sickness",
+        "prompt": "Have you ever been sick recently?",
+        "duration": 4,
+        "llm_behavior": "extract_value",
+        "acknowledge": true,
+        "hint": "You can say: Yes, I had a cold. / No, I was fine."
+      },
+      {
+        "key": "symptoms",
+        "prompt": "What symptoms did you have?",
+        "duration": 4,
+        "llm_behavior": "validate_meaningful_response",
+        "retry_on_fail": true,
+        "acknowledge": true,
+        "hint": "I had a fever and a headache."
+      },
+      {
+        "key": "doctor_visit",
+        "prompt": "Did you visit a doctor?",
+        "duration": 4,
+        "llm_behavior": "extract_value",
+        "acknowledge": true,
+        "hint": "Yes, I did. / No, I stayed at home."
+      },
+      {
+        "key": "doctor_advice",
+        "prompt": "What advice did the doctor give you?",
+        "duration": 4
+      },
+      {
+        "key": "health_care",
+        "prompt": "How do you take care of your health now?",
+        "duration": 4
+      }
+    ],
+    "validation_logic": {
+      "type": "family_validation",
+      "minimum_correct": 2,
+      "feedback_pass": "Good job reflecting on your health habits!",
+      "feedback_fail": "Let’s work a little more on your health vocabulary."
+    }
+  }

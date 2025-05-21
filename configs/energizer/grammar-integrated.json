@@ -1,0 +1,31 @@
+{
+    "module": "energizer",
+    "title": "Grammar-Integrated Tasks",
+    "welcome": "Let’s fix some grammar mistakes!",
+    "instruction": "Correct the errors or complete the sentence.",
+    "fields": [
+      {
+        "key": "correction1",
+        "prompt": "Correct the error: 'She don't like pizza.'",
+        "incorrect": "She don't like pizza.",
+        "hint": "She doesn't like pizza.",
+        "llm_behavior": "validate_grammar_correction",
+        "validate_pattern": "grammar"
+      },
+      {
+        "key": "correction2",
+        "prompt": "Make a tag question: 'You're coming, ___?'",
+        "incorrect": "You're coming, ___?",
+        "hint": "You're coming, aren't you?",
+        "llm_behavior": "validate_grammar_correction",
+        "validate_pattern": "grammar"
+      }
+    ],
+    "validation_logic": {
+      "type": "pattern_match",
+      "pattern": "grammar",
+      "minimum_correct": 2,
+      "feedback_pass": "Excellent corrections!",
+      "feedback_fail": "Some corrections were off — let's try again."
+    }
+  }

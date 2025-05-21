@@ -1,0 +1,30 @@
+{
+    "module": "energizer",
+    "title": "Roleplays (with Dialogue)",
+    "welcome": "Let's practice real-life conversations through roleplay.",
+    "instruction": "Respond appropriately based on the given context.",
+    "fields": [
+      {
+        "key": "customer_complaint",
+        "prompt": "You're at a mobile shop. Make a complaint about a phone you purchased yesterday.",
+        "duration": 5,
+        "llm_behavior": "validate_contextual_dialogue",
+        "context": "Customer complaining about a faulty mobile phone",
+        "hint": "Excuse me, I bought this mobile yesterday, and it’s not working."
+      },
+      {
+        "key": "student_extension",
+        "prompt": "You’re talking to a teacher. Ask for a project extension because you were sick.",
+        "duration": 5,
+        "llm_behavior": "validate_contextual_dialogue",
+        "context": "Student requesting deadline extension due to illness",
+        "hint": "Sir, may I have two extra days to submit my project? I was sick."
+      }
+    ],
+    "validation_logic": {
+      "type": "contextual_dialogue_check",
+      "minimum_correct": 2,
+      "feedback_pass": "Great! You handled both situations confidently.",
+      "feedback_fail": "Let’s go over the scenarios again and be more specific."
+    }
+  }

@@ -1,0 +1,27 @@
+{
+    "module": "commands",
+    "title": "Using Commands",
+    "instruction": "Give clear and useful instructions.",
+    "welcome": "Let's dive into practicing clear instructions today!",
+    "fields": [
+      {
+        "key": "command_instruction",
+        "prompt": "Give a clear instruction for lab safety.",
+        "duration": 5,
+        "llm_behavior": "validate_command",
+        "hint": "First, wear your gloves and safety goggles before entering the lab.",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "custom_command_block",
+      "target_fields": ["command_instruction"],
+      "minimum_correct": 1,
+      "feedback_pass": "Great! That was a clear and useful instruction.",
+      "feedback_fail": "Let's try again with a clear command, like 'Wash your hands.'"
+    },
+    "post_summary_feedback": {
+      "PASS": "That was a great instruction. Well done!",
+      "FAIL": "No worries! Let's practice giving clear commands again."
+    }
+  }

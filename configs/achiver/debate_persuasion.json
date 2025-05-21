@@ -1,0 +1,38 @@
+{
+    "module": "debate_persuasion",
+    "title": "Debate: Arguing Persuasively",
+    "welcome": "Let's have a mini-debate!",
+    "fields": [
+      {
+        "key": "debate_opinion",
+        "prompt": "Topic: “Online learning is better than classroom learning.” What is your opinion?",
+        "hint": "You can say: I agree because it's flexible / I disagree because in-person is better.",
+        "duration": 5,
+        "llm_behavior": "validate_debate_opinion",
+        "max_attempts": 2
+      },
+      {
+        "key": "debate_example",
+        "prompt": "Can you give one strong example to support your point?",
+        "hint": "For example: I can replay lectures when I miss something.",
+        "duration": 5,
+        "llm_behavior": "validate_debate_opinion",
+        "max_attempts": 2
+      },
+      {
+        "key": "debate_counter",
+        "prompt": "What would you say if someone disagreed with you?",
+        "hint": "You can say: I understand, but online classes help people in remote areas.",
+        "duration": 5,
+        "llm_behavior": "validate_debate_opinion",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "custom_debate_analysis",
+      "target_fields": ["debate_opinion", "debate_example", "debate_counter"],
+      "minimum_correct": 2,
+      "feedback_pass": "Nice job! Your debate points are thoughtful and persuasive.",
+      "feedback_fail": "Let’s refine your argument and make it more convincing!"
+    }
+  }

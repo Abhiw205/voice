@@ -1,0 +1,28 @@
+{
+    "module": "narration_storytelling",
+    "title": "Narration Practice - Storytelling in Past Tense",
+    "welcome": "Let's practice storytelling! Share something memorable from your life.",
+    "fields": [
+      {
+        "key": "memorable_day",
+        "prompt": "Tell me a story about a memorable day in your life.",
+        "hint": "For example: I visited my grandparents last summer and we had a picnic in the park.",
+        "llm_behavior": "validate_past_tense_response",
+        "max_attempts": 2
+      },
+      {
+        "key": "story_details",
+        "prompt": "Try to include when, where, who was involved, what happened, and how you felt.",
+        "hint": "It was last year at my school event. I felt proud and happy.",
+        "llm_behavior": "validate_past_tense_response",
+        "max_attempts": 2
+      }
+    ],
+    "validation_logic": {
+      "type": "custom_meaningful",
+      "target_fields": ["memorable_day", "story_details"],
+      "minimum_correct": 2,
+      "feedback_pass": "Beautiful storytelling! You used the past tense correctly.",
+      "feedback_fail": "Try to use past tense verbs and describe your experience more clearly."
+    }
+  }

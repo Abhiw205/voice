@@ -1,0 +1,24 @@
+{
+    "module_name": "family",
+    "fields": [
+      {
+        "key": "live_with_family",
+        "prompt": "Do you live with your family?",
+        "duration": 4
+      },
+      {
+        "key": "family_members",
+        "prompt": "Who is in your family?",
+        "duration": 6
+      },
+      {
+        "key": "parents_jobs",
+        "prompt": "What does your mother and father do?",
+        "duration": 6
+      }
+    ],
+    "summary_template": "There are {family_count} people in my family: {family_members}.",
+    "dynamic_logic": {
+      "family_count_from": "family_members"
+    }
+  }

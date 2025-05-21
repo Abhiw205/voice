@@ -1,0 +1,69 @@
+{
+  "module_name": "refresher",
+  "activities": [
+    {
+      "title": "Welcome",
+      "fields": [
+        {
+          "key": "greeting",
+          "prompt": "Hello! I'm Mentortle, your English conversation partner. Let's start with a small conversation. Ready?",
+          "duration": 3
+        }
+      ],
+      "summary_template": "User agreed to start conversation."
+    },
+    {
+      "title": "Self-Introduction",
+      "fields": [
+        { "key": "name", "prompt": "What's your full name?", "duration": 4 },
+        { "key": "spelling", "prompt": "How do you spell your name?", "duration": 4 },
+        { "key": "age", "prompt": "How old are you?", "duration": 3 },
+        { "key": "location", "prompt": "Where are you from?", "duration": 4 },
+        { "key": "occupation", "prompt": "Are you a student or do you work?", "duration": 4 }
+      ],
+      "summary_template": "My name is {name}. I am {age} years old. I am from {location}. I am a {occupation}."
+    },
+    {
+      "title": "Functional Grammar I: Declarative Sentences",
+      "fields": [
+        { "key": "morning_sentence", "prompt": "Make a sentence about what you do in the morning.", "duration": 4 },
+        { "key": "friend_likes", "prompt": "Make a sentence about what your best friend likes.", "duration": 4 },
+        { "key": "sentence1", "prompt": "Tell me another sentence.", "duration": 4 },
+        { "key": "sentence2", "prompt": "Another one, please.", "duration": 4 },
+        { "key": "sentence3", "prompt": "One last sentence with subject + verb + object.", "duration": 4 }
+      ],
+      "summary_template": "{morning_sentence} {friend_likes} {sentence1} {sentence2} {sentence3}"
+    },
+    {
+      "title": "Functional Grammar II: Yes/No Questions and Negatives",
+      "fields": [
+        { "key": "q1", "prompt": "Change this sentence into a question: 'You go to school.'", "duration": 4 },
+        { "key": "n1", "prompt": "Now, make it negative.", "duration": 4 },
+        { "key": "q2", "prompt": "Make a question from: 'She plays football.'", "duration": 4 },
+        { "key": "n2", "prompt": "Make it negative: 'He watches TV.'", "duration": 4 }
+      ],
+      "summary_template": "{q1} {n1} {q2} {n2}"
+    },
+    {
+      "title": "Pronunciation I: Vowel & Consonant Sounds",
+      "fields": [
+        { "key": "vowels", "prompt": "Say these vowel sounds: /i/, /ɪ/, /e/, /æ/ — 'sit, seat, set, sat'", "duration": 4 },
+        { "key": "consonants", "prompt": "Say these consonant sounds: /b/, /p/, /v/, /f/ — 'bat, pat, van, fan'", "duration": 4 },
+        { "key": "sentence1", "prompt": "Say this sentence: 'The boy bought a big bat.'", "duration": 4 },
+        { "key": "sentence2", "prompt": "Say this sentence: 'My father fixes the fan.'", "duration": 4 }
+      ],
+      "summary_template": "{vowels} {consonants} {sentence1} {sentence2}"
+    },
+    {
+      "title": "Pronunciation II: Syllable Stress and Intonation",
+      "fields": [
+        { "key": "stress_teacher", "prompt": "Where’s the stress in the word ‘teacher’? Say it out loud.", "duration": 3 },
+        { "key": "stress_doctor", "prompt": "Say where stress falls in 'doctor'.", "duration": 3 },
+        { "key": "stress_banana", "prompt": "Say where stress falls in 'banana'.", "duration": 3 },
+        { "key": "stress_photograph", "prompt": "Say where stress falls in 'photograph'.", "duration": 3 },
+        { "key": "intonation_question", "prompt": "Practice this question with rising intonation: 'Are you coming today?'", "duration": 3 }
+      ],
+      "summary_template": "{stress_teacher} {stress_doctor} {stress_banana} {stress_photograph} {intonation_question}"
+    }
+  ]
+}

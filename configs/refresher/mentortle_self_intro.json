@@ -1,0 +1,51 @@
+{
+  "module": "mentortle",
+  "title": "Self-Introduction",
+  "fields": [
+    {
+    "key": "name",
+    "prompt": "Hi there! What’s your full name?",
+    "duration": 4,
+    "llm_behavior": "extract_value",
+    "acknowledge": true
+    },
+    {
+    "key": "spelling",
+    "prompt": "How do you spell your name?",
+    "duration": 8,
+    "validate_spell": true
+    },
+    {
+    "key": "age",
+    "prompt": "How old are you?",
+    "duration": 3,
+    "llm_behavior": "extract_value",
+    "acknowledge": true,
+    "ack_prompt": "Got it, you're {value} years old! Let's move on.",
+    "ack_max_words": 10
+    },
+    {
+    "key": "location",
+    "prompt": "Where are you from?",
+    "duration": 3,
+    "llm_behavior": "extract_value",
+    "acknowledge": true,
+    "ack_prompt": "Nice! You're from {value}. "
+    },
+    {
+    "key": "occupation",
+    "prompt": "Are you a student or do you work?",
+    "duration": 4,
+    "retry_on_empty": true,
+    "llm_behavior": "extract_value",
+    "acknowledge": true
+    }
+  ],
+  "summary_template": "My name is {name}. I am {age}. I am from {location}. I am a {occupation}.",
+  "post_summary_feedback": {
+    "PASS": "Great job! You repeated the sentence correctly!",
+    "FAIL": "Let's practice a bit more to improve your pronunciation.",
+    "RETRY": "Almost there! Try to be clearer next time.",
+    "SKIPPED": "We'll try the summary again when more information is filled."
+  }
+}
