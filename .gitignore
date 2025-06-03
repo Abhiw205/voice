@@ -1,0 +1,26 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Environment files
+.env
+
+# Virtual environment
+venv/
+
+# Log files
+*.log
+webapp/*.log
+webapp/static/__pycache__/
+
+# Output/temporary files
+*.json
+!keep.json  # Uncomment this if you want to keep a specific file
+expressing_preference_output_*.json
+mentortle_output_*.json
+
+# System files
+.DS_Store
+Thumbs.db
+.vscode

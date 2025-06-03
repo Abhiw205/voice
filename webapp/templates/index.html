@@ -96,7 +96,7 @@
 </div>
 <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
 <script>
-  const socket = io("http://localhost:3000");
+  const socket = io();
   let currentFieldKey = "";
   let latestDuration = 5000;
 
@@ -173,7 +173,7 @@ function speak(text) {
 
   document.getElementById("startBtn").addEventListener("click", () => {
     selectedConfig = configSelect.value;
-    fetch("http://127.0.0.1:3000/start-module", {
+    fetch("/start-module", {
       method: "POST",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ config: selectedConfig })
@@ -209,7 +209,7 @@ document.getElementById("recordBtn").addEventListener("click", async () => {
       formData.append("audio", audioBlob, "recording.webm");
 
       try {
-        const transcribeRes = await fetch("http://127.0.0.1:3000/transcribe", {
+        const transcribeRes = await fetch("/transcribe", {
           method: "POST",
           body: formData
         });
@@ -222,7 +222,7 @@ document.getElementById("recordBtn").addEventListener("click", async () => {
 
         appendMsg("recognized", transcribeData.transcript);
 
-        const responseRes = await fetch("http://127.0.0.1:3000/submit-response", {
+        const responseRes = await fetch("/submit-response", {
           method: "POST",
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
