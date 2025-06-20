@@ -1018,6 +1018,9 @@ class ModuleRunner:
                 #print(f"\nCHATBOT: {msg}")
                 #self.speak(msg)
                 self.notify_ui("feedback", msg)
+                
+        if "closing" in self.config:
+            self.notify_ui("closing", self.config["closing"])
 
         filename = f"{self.config['module']}_output_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.json"
         with open(filename, 'w') as f:
