@@ -2,6 +2,7 @@
     "module": "advanced_workshop",
     "title": "Advanced Workshop (Podcast / Seminar / Interview)",
     "welcome": "Advanced time! Choose an activity to practice.",
+    "closing": "This module is completed, Please select the new one"
     "fields": [
       {
         "key": "workshop_choice",
