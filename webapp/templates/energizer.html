@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Speaking Practice UI</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       padding: 20px;
-      background-color: #f0f8ff;
+      margin: 0;
+      background: linear-gradient(135deg, #b2f7ef, #a0c4ff); /* greenish to blue gradient */
     }
+
     .container {
       max-width: 100%;
       margin: auto;
-      padding: 0;
       background-color: #ffffff;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -37,35 +38,110 @@
       background: #fdfdfd;
     }
 
-    select, button {
-      padding: 12px;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      background-color: #f8f9fa;
-      font-size: 15px;
-      transition: background-color 0.2s;
-      width: 100%;
-      margin-top: 10px;
+    .left-pane label {
+      font-weight: bold;
+      font-size: 16px;
+      background: linear-gradient(90deg, #004e92, #000428);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+      margin-bottom: 6px;
     }
 
-    button:hover {
-      background-color: #e2e6ea;
+    select {
+      padding: 12px 16px;
+      border: 1px solid #007bff;
+      border-radius: 10px;
+      font-size: 15px;
+      width: 100%;
+      background-color: #f0f8ff;
+      appearance: none;
+      background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23007bff" class="bi bi-caret-down-fill" viewBox="0 0 16 16"><path d="M7.247 11.14 2.451 5.658c-.566-.63-.106-1.658.753-1.658h9.592c.86 0 1.32 1.027.753 1.658l-4.796 5.482a1 1 0 0 1-1.506 0z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 16px;
+      transition: box-shadow 0.2s;
+    }
+
+    select:focus {
+      outline: none;
+      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    button {
+      padding: 14px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
       cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      color: #fff;
+    }
+
+    #startBtn {
+      background: linear-gradient(90deg, #28a745, #218838);
+    }
+
+    #startBtn:hover {
+      background: linear-gradient(90deg, #218838, #1e7e34);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    }
+
+    #recordBtn {
+      background: linear-gradient(90deg, #007bff, #0056b3);
+    }
+
+    #recordBtn:hover {
+      background: linear-gradient(90deg, #0056b3, #004080);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 10px rgba(0,0,0,0.15);
     }
 
     #flowDisplay {
-      border-radius: 6px;
-      border: 1px solid #ddd;
-      background-color: #ffffff;
-      padding: 12px;
-      margin-bottom: 15px;
-      font-size: 14px;
-      color: #333;
-      flex: 1;
-      overflow-y: auto;
-      white-space: pre-wrap;
-      min-height: 150px;
-      max-height: 100%;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 123, 255, 0.2);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(6px); /* glassmorphism effect */
+    padding: 16px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #333;
+    flex: 1;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    min-height: 200px;
+    max-height: 100%;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+    transition: box-shadow 0.3s ease;
+    }
+    #flowDisplay:hover {
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+    #flowDisplay p {
+    margin: 6px 0;
+    padding: 4px 8px;
+    border-radius: 6px;
+    }
+    #flowDisplay p strong {
+    color: #007bff; /* blue for label */
+    }
+    #flowDisplay p:hover {
+    background: rgba(0, 123, 255, 0.05); /* light blue background on hover */
+    }
+    #flowDisplay p:nth-child(even) {
+    background: rgba(0, 123, 255, 0.03); /* subtle striping */
+    }
+    .left-pane img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin-top: 20px;
+      border-radius: 10px;
     }
   </style>
 </head>
@@ -74,16 +150,10 @@
   <div style="display: flex; height: 80vh;">
     <!-- Left Pane -->
     <div class="left-pane">
-      <h3>Modules</h3>
-      <label for="folderSelect">Category</label>
-      <select id="folderSelect">
-        <option value="refresher">Refresher</option>
-        <option value="energizer">Energizer</option>
-        <option value="achiver">Achiever</option>
-      </select>
-      <label for="configSelect">Module</label>
+      <label for="configSelect">Modules</label>
       <select id="configSelect"></select>
       <button id="startBtn" style="margin-top: 20px;">Start Module</button>
+      <img src="{{ url_for('static', filename='robot.png') }}" alt="Robot holding pen">
     </div>
 
     <!-- Right Pane -->
@@ -153,24 +223,24 @@ function speak(text) {
   const flowBox = document.getElementById("flowDisplay");
   let selectedConfig = "";
 
-  folderSelect.addEventListener("change", () => {
-    fetch("/get-configs", {
-      method: "POST",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ folder: folderSelect.value })
-    })
-    .then(res => res.json())
-    .then(data => {
-      configSelect.innerHTML = "";
-      data.forEach(cfg => {
-        const option = document.createElement("option");
-        option.value = `${folderSelect.value}/${cfg.name}`;
-        option.textContent = cfg.name;
-        configSelect.appendChild(option);
-      });
+    window.addEventListener("DOMContentLoaded", () => {
+    const type = "energizer";  // Replace with dynamic type if needed
+    fetch(`/get-module?type=${type}`)
+        .then(res => res.json())
+        .then(data => {
+        configSelect.innerHTML = "";
+        data.forEach(cfg => {
+            const option = document.createElement("option");
+            option.value = `${type}/${cfg.name}`;
+            option.textContent = cfg.name;
+            configSelect.appendChild(option);
+        });
+        })
+        .catch(err => {
+        console.error("❌ Failed to auto-load configs", err);
+        appendMsg("error", "Failed to auto-load configs");
+        });
     });
-  });
-
   document.getElementById("startBtn").addEventListener("click", () => {
     selectedConfig = configSelect.value;
     fetch("/start-module", {

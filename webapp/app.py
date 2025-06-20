@@ -26,6 +26,18 @@ def index():
     folders = [f for f in os.listdir(CONFIG_BASE) if os.path.isdir(os.path.join(CONFIG_BASE, f))]
     return render_template("index.html", folders=folders)
 
+@app.route("/refresher")
+def refresher():
+    return render_template("refresher.html")
+
+@app.route("/energizer")
+def energizer():
+    return render_template("energizer.html")
+
+@app.route("/achiver")
+def achiver():
+    return render_template("achiver.html")
+
 @app.route("/get-configs", methods=["POST"])
 def get_configs():
     folder = request.json.get("folder")
@@ -33,9 +45,18 @@ def get_configs():
     path = os.path.join(config_base, folder)
     configs = []
     if os.path.exists(path):
-        configs = [f for f in os.listdir(path) if f.endswith(".json")]
+        configs = [{"id": idx, "name": f} for idx, f in enumerate(os.listdir(path)) if f.endswith(".json")]
     return jsonify(configs)
 
+@app.route("/get-module", methods=["GET"])
+def get_configs_query():
+    folder = request.args.get("type")
+    config_base = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "configs"))
+    path = os.path.join(config_base, folder)
+    configs = []
+    if folder and os.path.exists(path):
+        configs = [{"id": idx, "name": f} for idx, f in enumerate(os.listdir(path)) if f.endswith(".json")]
+    return jsonify(configs)
 
 # --- New endpoints for event-driven module running ---
 @app.route("/start-module", methods=["POST"])
