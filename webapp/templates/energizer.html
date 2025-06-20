@@ -186,7 +186,7 @@
     appendMsg(label, message);
 
     // Speak the message for specific labels
-    if (["welcome", "prompt", "feedback"].includes(label)) {
+    if (["welcome", "prompt", "feedback","closing"].includes(label)) {
       await speak(message);
     }
 
