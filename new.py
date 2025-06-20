@@ -67,7 +67,9 @@ class ModuleRunner:
         if "welcome" in self.config:
             self.notify_ui("welcome", self.config["welcome"])
         self.prompt_current_field()
-
+    def emit_closing_if_needed(self):
+        if "closing" in self.config:
+            self.notify_ui("closing", self.config["closing"])
     def prompt_current_field(self):
         if self.current_field_index >= len(self.fields):
             self.perform_validation_and_feedback()
