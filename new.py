@@ -151,6 +151,7 @@ class ModuleRunner:
         with open(filename, 'w') as f:
             json.dump({**self.filled_fields, "field_results": self.field_results}, f, indent=2)
         self.notify_ui("status", f"Results saved to {filename}")
+        self.emit_static_closing()
     def mark_audio_ready(self):
         self.audio_ready = True
     def notify_ui(self, label, message, **kwargs):
