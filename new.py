@@ -77,6 +77,7 @@ class ModuleRunner:
     def prompt_current_field(self):
         if self.current_field_index >= len(self.fields):
             self.perform_validation_and_feedback()
+            self.emit_static_closing()
             return
 
         field = self.fields[self.current_field_index]
