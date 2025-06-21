@@ -70,6 +70,10 @@ class ModuleRunner:
     def emit_closing_if_needed(self):
         if "closing" in self.config:
             self.notify_ui("closing", self.config["closing"])
+    def emit_static_closing(self):
+        closing_message = "This module is completed. Please select the next one."
+        logging.info(f"Emitting static closing message: {closing_message}")
+        self.notify_ui("closing", closing_message)
     def prompt_current_field(self):
         if self.current_field_index >= len(self.fields):
             self.perform_validation_and_feedback()
@@ -1028,6 +1032,7 @@ class ModuleRunner:
         with open(filename, 'w') as f:
             json.dump({**self.filled_fields, "field_results": self.field_results}, f, indent=2)
         self.notify_ui("status", f"Results saved to {filename}")
+        self.emit_static_closing()
         
     def assess_summary(self, user_spoken):
         norm_user = self.normalize(user_spoken)
