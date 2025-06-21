@@ -208,8 +208,19 @@
   });
 // Speech synthesis function
 function speak(text) {
+    const replacements = {
+    "/i/": "ee",
+    "/ɪ/": "ih",
+    "/e/": "eh",
+    "/æ/": "a as in cat"
+  };
+  let processedText = text;
+  for (const [phoneme, replacement] of Object.entries(replacements)) {
+    // Replace globally and ignore case
+    processedText = processedText.replaceAll(phoneme, replacement);
+  }
   return new Promise(resolve => {
-    const utterance = new SpeechSynthesisUtterance(text);
+    const utterance = new SpeechSynthesisUtterance(processedText);
     const voices = window.speechSynthesis.getVoices();
     utterance.voice = voices.find(v => v.lang && v.lang.includes("en")) || null;
     utterance.rate = 0.95;
