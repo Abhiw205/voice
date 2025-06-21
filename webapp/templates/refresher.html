@@ -208,12 +208,17 @@
   });
 // Speech synthesis function
 function speak(text) {
-    const replacements = {
+  const replacements = {
     "/i/": "ee",
     "/ɪ/": "ih",
     "/e/": "eh",
-    "/æ/": "a as in cat"
+    "/æ/": "a as in cat",
+    "/b/": "b as in bat",
+    "/p/": "p as in pat",
+    "/v/": "v as in van",
+    "/f/": "f as in fan"
   };
+
   let processedText = text;
   for (const [phoneme, replacement] of Object.entries(replacements)) {
     // Replace globally and ignore case
